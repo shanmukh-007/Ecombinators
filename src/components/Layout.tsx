@@ -1,7 +1,7 @@
-import { Sparkles } from 'lucide-react'
+import { Sparkles, Menu, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, { useState } from 'react'
 
 const MotionLink = motion.a
 
@@ -20,14 +20,19 @@ const Button: React.FC<{ variant?: 'primary' | 'secondary', href?: string, child
 
 const Navbar = () => {
   const location = useLocation()
-  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   const isActive = (path: string) => {
     if (path === '/') {
       return location.pathname === '/'
     }
     return location.pathname.startsWith(path)
   }
-  
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <div className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/40 border-b border-white/10">
       <div className="container-locked flex items-center justify-between px-4 py-3">
@@ -35,21 +40,23 @@ const Navbar = () => {
           <Sparkles className="text-accent" />
           <span className="font-bold">Vizax</span>
         </Link>
+
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className={`hover:text-white transition-colors ${isActive('/') ? 'text-white font-semibold' : ''}`}
           >
             Home
           </Link>
-          <Link 
-            to="/products" 
+          <Link
+            to="/products"
             className={`hover:text-white transition-colors ${isActive('/products') ? 'text-white font-semibold' : ''}`}
           >
             Products
           </Link>
-          <Link 
-            to="/about" 
+          <Link
+            to="/about"
             className={`hover:text-white transition-colors ${isActive('/about') ? 'text-white font-semibold' : ''}`}
           >
             About
@@ -61,7 +68,74 @@ const Navbar = () => {
         <div className="hidden md:block">
           <Button href="#contact">Book a Call</Button>
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          className="md:hidden text-white p-2"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden border-t border-white/10 bg-black/95 backdrop-blur"
+        >
+          <nav className="container-locked px-4 py-4 flex flex-col gap-4">
+            <Link
+              to="/"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/') ? 'text-white font-semibold' : ''}`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/products"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/products') ? 'text-white font-semibold' : ''}`}
+            >
+              Products
+            </Link>
+            <Link
+              to="/about"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/about') ? 'text-white font-semibold' : ''}`}
+            >
+              About
+            </Link>
+            <a
+              href="#services"
+              onClick={closeMobileMenu}
+              className="text-white/80 hover:text-white transition-colors py-2"
+            >
+              Services
+            </a>
+            <a
+              href="#work"
+              onClick={closeMobileMenu}
+              className="text-white/80 hover:text-white transition-colors py-2"
+            >
+              Work
+            </a>
+            <a
+              href="#contact"
+              onClick={closeMobileMenu}
+              className="text-white/80 hover:text-white transition-colors py-2"
+            >
+              Contact
+            </a>
+            <div className="pt-2">
+              <Button href="#contact">Book a Call</Button>
+            </div>
+          </nav>
+        </motion.div>
+      )}
     </div>
   )
 }

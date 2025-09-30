@@ -4,7 +4,6 @@ import Layout from './components/Layout'
 import Home from './pages/Home'
 import Products from './pages/Products'
 import About from './pages/About'
-import React from 'react'
 
 export default function App() {
   return (

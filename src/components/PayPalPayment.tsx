@@ -22,12 +22,12 @@ const PayPalPayment: React.FC<PayPalPaymentProps> = ({
   // PayPal client ID - Replace with your actual client ID
   // For production, use environment variables
   const initialOptions = {
-    clientId: process.env.REACT_APP_PAYPAL_CLIENT_ID || 'test',
+    clientId: import.meta.env.VITE_PAYPAL_CLIENT_ID || 'test',
     currency: 'USD',
     intent: 'capture',
   }
 
-  const createOrder = (data: any, actions: any) => {
+  const createOrder = (_data: any, actions: any) => {
     setPaymentStatus('processing')
     return actions.order.create({
       purchase_units: [
@@ -41,7 +41,7 @@ const PayPalPayment: React.FC<PayPalPaymentProps> = ({
     })
   }
 
-  const onApprove = async (data: any, actions: any) => {
+  const onApprove = async (_data: any, actions: any) => {
     try {
       const details = await actions.order.capture()
       setPaymentStatus('success')
