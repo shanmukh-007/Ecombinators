@@ -1,5 +1,5 @@
 {
-  "name": "ecombinators",
+  "name": "vizax",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -20,9 +20,11 @@
     "vite": "^7.1.0"
   },
   "dependencies": {
+    "@paypal/react-paypal-js": "^8.9.1",
     "framer-motion": "^12.23.12",
     "lucide-react": "^0.539.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.3"
   }
 }
