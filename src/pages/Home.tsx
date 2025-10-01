@@ -400,7 +400,7 @@ const countries = [
   { code: 'ZW', name: 'Zimbabwe' }
 ]
 
-import { useState, useRef, useEffect } from 'react'
+import { useState } from 'react'
 
 // CONTACT
 const Contact = () => {
