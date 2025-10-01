@@ -1,7 +1,7 @@
 import { Sparkles, Menu, X } from 'lucide-react'
 import { Link, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
-import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState, useEffect, useRef } from 'react'
 
 const MotionLink = motion.a
 
@@ -21,6 +21,45 @@ const Button: React.FC<{ variant?: 'primary' | 'secondary', href?: string, child
 const Navbar = () => {
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+  const headerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      // Show header when scrolling to top, hide when scrolling down
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down
+        setIsVisible(false)
+      } else {
+        // Scrolling up
+        setIsVisible(true)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
+    const throttledHandleScroll = throttle(handleScroll, 16) // ~60fps
+    window.addEventListener('scroll', throttledHandleScroll)
+    
+    return () => {
+      window.removeEventListener('scroll', throttledHandleScroll)
+    }
+  }, [lastScrollY])
+
+  // Simple throttle function
+  const throttle = (func: Function, limit: number) => {
+    let inThrottle: boolean
+    return function(this: any, ...args: any[]) {
+      if (!inThrottle) {
+        func.apply(this, args)
+        inThrottle = true
+        setTimeout(() => inThrottle = false, limit)
+      }
+    }
+  }
 
   const isActive = (path: string) => {
     if (path === '/') {
@@ -34,11 +73,19 @@ const Navbar = () => {
   }
 
   return (
-    <div className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/40 border-b border-white/10">
+    <motion.div
+      ref={headerRef}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{
+        y: isVisible ? 0 : -100,
+        opacity: isVisible ? 1 : 0
+      }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/40 border-b border-white/10"
+    >
       <div className="container-locked flex items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2">
-          <Sparkles className="text-accent" />
-          <span className="font-bold">Vizax</span>
+          <span className="text-2xl md:text-3xl font-black tracking-tight text-white">vizax</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -66,7 +113,7 @@ const Navbar = () => {
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
         </nav>
         <div className="hidden md:block">
-          <Button href="#contact">Book a Call</Button>
+          <Button variant="secondary" href="#contact">Book a Call</Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -131,12 +178,12 @@ const Navbar = () => {
               Contact
             </a>
             <div className="pt-2">
-              <Button href="#contact">Book a Call</Button>
+              <Button variant="secondary" href="#contact">Book a Call</Button>
             </div>
           </nav>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }
 
@@ -150,6 +197,7 @@ const Footer = () => (
         <Link to="/about" className="hover:text-white">About</Link>
         <a href="#services" className="hover:text-white">Services</a>
         <a href="#contact" className="hover:text-white">Contact</a>
+        <Button variant="secondary" href="#contact">Book a Call</Button>
       </div>
     </div>
   </footer>
@@ -170,4 +218,3 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 }
 
 export default Layout
-
