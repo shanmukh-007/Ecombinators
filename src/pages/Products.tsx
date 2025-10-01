@@ -145,7 +145,7 @@ const Products: React.FC = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
-              <span className="animated-gradient gradient-text">
+              <span className="animated-gradient gradient-text text-white">
                 Powerful AI Products for Modern Businesses
               </span>
             </h1>
