@@ -144,7 +144,7 @@ const Products: React.FC = () => {
               <span className="text-sm font-semibold text-accent">AI Solutions</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight text-white">
               <span className="animated-gradient gradient-text">
                 Powerful AI Products for Modern Businesses
               </span>
@@ -182,7 +182,7 @@ const Products: React.FC = () => {
           <div className="mt-8 flex flex-wrap gap-4 justify-center">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-400 text-white rounded-xl px-6 py-3 font-semibold hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-2 bg-transparent text-white border border-white/20 rounded-xl px-6 py-3 font-semibold hover:border-accent/50 hover:text-accent transition-colors"
             >
               Get Started <ArrowRight size={18} />
             </a>
@@ -200,4 +200,3 @@ const Products: React.FC = () => {
 }
 
 export default Products
-
