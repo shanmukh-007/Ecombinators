@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Target, Users, Lightbulb, Award, TrendingUp, Globe, Heart } from 'lucide-react'
+import { Target, Users, Lightbulb, Award, TrendingUp, Globe, Heart, Shield, Mail, CreditCard, Clock } from 'lucide-react'
 import React from 'react'
 
 const fadeIn = (delay = 0) => ({ 
@@ -24,56 +24,56 @@ interface TeamMember {
 const values: Value[] = [
   {
     icon: <Lightbulb className="w-6 h-6" />,
-    title: 'Innovation First',
-    description: 'We push the boundaries of AI technology to deliver cutting-edge solutions that drive real business value.'
+    title: 'Custom Solutions',
+    description: 'We build conference websites tailored to your specific needs, from registration systems to abstract management.'
   },
   {
     icon: <Users className="w-6 h-6" />,
     title: 'Client-Centric',
-    description: 'Your success is our success. We work closely with you to understand your needs and deliver tailored solutions.'
+    description: 'Your conference requirements drive our development. We collaborate closely to deliver exactly what you envision.'
   },
   {
     icon: <Award className="w-6 h-6" />,
     title: 'Excellence',
-    description: 'We maintain the highest standards in everything we do, from code quality to customer service.'
+    description: 'Every website features professional design, robust functionality, and seamless user experience for attendees and organizers.'
   },
   {
     icon: <Globe className="w-6 h-6" />,
-    title: 'Global Impact',
-    description: 'We build solutions that scale globally while maintaining local relevance and cultural sensitivity.'
+    title: 'Global Events',
+    description: 'We create scalable solutions for international conferences, supporting multiple languages, currencies, and time zones.'
   }
 ]
 
 const stats = [
-  { value: '50+', label: 'AI Projects Delivered' },
-  { value: '98%', label: 'Client Satisfaction' },
+  { value: '100+', label: 'Conferences Supported' },
+  { value: '99%', label: 'Client Satisfaction' },
   { value: '24/7', label: 'Support Available' },
-  { value: '15+', label: 'Industry Verticals' }
+  { value: '50+', label: 'Custom Features Delivered' }
 ]
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Dr. Sarah Chen',
-    role: 'Chief AI Officer',
-    bio: 'PhD in Machine Learning from MIT. 15+ years building AI systems at scale.',
+    name: 'Dr. Elena Vasquez',
+    role: 'Conference Technology Lead',
+    bio: 'Expert in event management software with 12+ years building digital platforms for global conferences.',
     avatar: 'https://i.pravatar.cc/150?img=5'
   },
   {
-    name: 'Marcus Rodriguez',
-    role: 'Head of Engineering',
-    bio: 'Former Tech Lead at Google. Expert in distributed systems and AI infrastructure.',
+    name: 'Raj Patel',
+    role: 'Senior Web Developer',
+    bio: 'Full-stack specialist focused on secure payment integrations and user-friendly registration systems.',
     avatar: 'https://i.pravatar.cc/150?img=12'
   },
   {
-    name: 'Aisha Patel',
-    role: 'Director of AI Research',
-    bio: 'Published researcher in NLP and computer vision. Stanford AI Lab alumna.',
+    name: 'Sophia Lee',
+    role: 'UX/UI Designer',
+    bio: 'Award-winning designer specializing in intuitive interfaces for academic and professional events.',
     avatar: 'https://i.pravatar.cc/150?img=9'
   },
   {
-    name: 'James Wilson',
-    role: 'VP of Product',
-    bio: 'Product leader with 10+ years in AI/ML products. Ex-Amazon, Microsoft.',
+    name: 'Michael Grant',
+    role: 'Project Manager',
+    bio: 'Experienced in delivering custom software solutions for universities and international organizations.',
     avatar: 'https://i.pravatar.cc/150?img=13'
   }
 ]
@@ -95,14 +95,14 @@ const About: React.FC = () => {
             </div>
             
             <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-              <span className="animated-gradient gradient-text">
-                Building the Future of AI-Powered Business
+              <span className="text-white">
+                Your Complete Conference Website Partner
               </span>
             </h1>
             
             <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-              We're a team of AI experts, engineers, and innovators dedicated to transforming 
-              businesses through intelligent automation and cutting-edge AI solutions.
+              We specialize in creating professional, automated conference websites that handle everything from registrations to payments, 
+              tailored to your event's unique requirements.
             </p>
           </motion.div>
         </div>
@@ -117,14 +117,12 @@ const About: React.FC = () => {
               <h2 className="text-3xl md:text-4xl font-extrabold">Our Mission</h2>
             </div>
             <p className="text-white/80 text-lg leading-relaxed mb-4">
-              At Vizax, we believe that AI should be accessible, practical, and transformative. 
-              Our mission is to democratize AI technology and help businesses of all sizes harness 
-              its power to solve real-world problems.
+              At Vizax, we empower conference organizers with custom-built websites that streamline event management and 
+              enhance attendee experience. From admin panels to automated workflows, we handle the technical details so you can focus on your event.
             </p>
             <p className="text-white/80 text-lg leading-relaxed">
-              We combine deep technical expertise with a pragmatic approach to deliver AI solutions 
-              that are not just innovative, but also reliable, scalable, and aligned with your 
-              business objectives.
+              We work closely with universities, organizations, and event planners to deliver scalable solutions that adapt to your specific needs, 
+              ensuring seamless registration, payments, and content management.
             </p>
           </motion.div>
           
@@ -147,9 +145,9 @@ const About: React.FC = () => {
       {/* Values Section */}
       <section className="container-locked px-4 py-16 md:py-24">
         <motion.div {...fadeIn(0)} className="text-center max-w-2xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Our Values</h2>
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Our Core Values</h2>
           <p className="text-white/70 text-lg">
-            The principles that guide everything we do
+            The principles guiding our conference website development
           </p>
         </motion.div>
         
@@ -178,10 +176,10 @@ const About: React.FC = () => {
         <motion.div {...fadeIn(0)} className="text-center max-w-2xl mx-auto mb-12">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Users className="text-accent w-8 h-8" />
-            <h2 className="text-3xl md:text-4xl font-extrabold">Meet Our Team</h2>
+            <h2 className="text-3xl md:text-4xl font-extrabold">Our Experts</h2>
           </div>
           <p className="text-white/70 text-lg">
-            World-class AI experts and engineers driving innovation
+            Experienced developers and event technology specialists
           </p>
         </motion.div>
         
@@ -216,24 +214,24 @@ const About: React.FC = () => {
         >
           <TrendingUp className="w-12 h-12 text-accent mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
-            Join Us on This Journey
+            Ready to Launch Your Conference Website?
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-            Whether you're looking to transform your business with AI or join our team of innovators, 
-            we'd love to hear from you.
+            We create custom solutions that fit your event perfectly. From basic registrations to advanced management systems, 
+            we'll build exactly what you need.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-400 text-white rounded-xl px-6 py-3 font-semibold hover:opacity-90 transition-opacity"
             >
-              Get in Touch
+              Get Started
             </a>
             <a
               href="#contact"
               className="inline-flex items-center gap-2 bg-transparent text-white border border-white/20 rounded-xl px-6 py-3 font-semibold hover:border-accent/50 hover:text-accent transition-colors"
             >
-              View Careers
+              Learn More
             </a>
           </div>
         </motion.div>
@@ -243,4 +241,3 @@ const About: React.FC = () => {
 }
 
 export default About
-

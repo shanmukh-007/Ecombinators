@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Sparkles, Shield, Mail, CreditCard, Globe, Clock, Settings, Zap, Database, X } from 'lucide-react'
-import React, { useState } from 'react'
+import { ArrowRight, Sparkles, Shield, Mail, CreditCard, Globe, Clock, Settings, Zap, Database, X, Phone, MapPin, MessageCircle } from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 // Animation helper
 const fadeIn = (delay = 0) => ({ 
@@ -42,28 +43,29 @@ const SectionTitle: React.FC<{ kicker?: string, title: string, subtitle?: string
 
 // Hero Section
 const Hero = () => (
-  <section className="relative overflow-hidden py-20 md:py-28 bg-gradient-to-br from-black to-slate-900">
+  <section className="relative overflow-hidden py-12 md:py-28 bg-[url('/images/best-product/oxford-building.webp')] bg-cover bg-center bg-no-repeat">
+    <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-transparent to-transparent" />
-    <div className="relative container-locked px-4">
-      <motion.div {...fadeIn(0)} className="text-center max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-          <span className="text-white">Conference Website</span>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-violet-500 block">Provider</span>
+    <div className="relative container-locked px-4 flex flex-col justify-center items-center">
+      <motion.div {...fadeIn(0)} className="text-center max-w-4xl mx-auto w-full px-4">
+        <h1 className="text-2xl sm:text-3xl md:text-6xl font-extrabold leading-tight mb-2 md:mb-6">
+          <span className="text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">Conference Website</span>
+          <span className="text-white block drop-shadow-[0_0_20px_rgba(255,255,255,0.5)]">Provider</span>
         </h1>
-        <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-3xl mx-auto">
+        <p className="text-sm sm:text-base md:text-2xl text-white/80 mb-3 md:mb-8 max-w-3xl mx-auto">
           Complete A to Z Tech Support for Entire Conference Organizations
         </p>
-        <div className="flex flex-col items-center gap-2 mb-8 text-center">
-          <a href="https://www.law.ox.ac.uk/content/event/2nd-international-conference-nursing-education-and-healthcare" target="_blank" rel="noreferrer" className="block w-64 h-48 rounded-xl overflow-hidden transition-all">
+        <div className="flex flex-col items-center gap-1 mb-3 md:mb-8 text-center">
+          <a href="https://www.law.ox.ac.uk/content/event/2nd-international-conference-nursing-education-and-healthcare" target="_blank" rel="noreferrer" className="block w-40 h-30 sm:w-64 sm:h-48 rounded-xl overflow-hidden transition-all">
             <img src="/images/best-product/oxford-logo.png" alt="University of Oxford Logo" className="w-full h-full object-contain p-2" />
           </a>
-          <span className="text-accent/90 font-semibold">Trusted by University of Oxford and leading institutions</span>
+          <span className="text-accent/90 font-semibold text-xs sm:text-base">Trusted by University of Oxford and leading institutions</span>
         </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="primary" href="https://nursingeducationconferences.org" target="_blank" rel="noreferrer">
-            View Live Example <ArrowRight size={18} />
+        <div className="flex flex-col sm:flex-row gap-2 md:gap-4 justify-center items-center">
+          <Button variant="primary" href="https://nursingeducationconferences.org" target="_blank" rel="noreferrer" className="text-xs sm:text-sm md:text-base px-3 py-1.5 md:px-5 md:py-3">
+            View Live Example <ArrowRight size={14} className="sm:size-16 md:size-18" />
           </Button>
-          <a href="https://nursingeducationconferences.org" target="_blank" rel="noreferrer" className="block w-32 h-12 sm:w-40 sm:h-14 rounded-xl overflow-hidden ring-1 ring-white/20 hover:ring-accent/40 transition-all">
+          <a href="https://nursingeducationconferences.org" target="_blank" rel="noreferrer" className="block w-32 h-12 sm:w-40 sm:h-14 md:w-48 md:h-16 rounded-xl overflow-hidden ring-1 ring-white/20 hover:ring-accent/40 transition-all">
             <img src="/images/best-product/intelli-logo.webp" alt="Intelli Logo" className="w-full h-full object-contain p-2" />
           </a>
         </div>
@@ -213,12 +215,6 @@ const Features = () => {
               onImageClick={openModal}
             />
             
-            <FeatureCard
-              icon={<Zap size={24} />}
-              title="Custom Features on Demand"
-              description="Extra functionalities tailored specifically to meet unique client requirements. From custom APIs to specialized modules, we build exactly what you need."
-              delay={1.7}
-            />
           </div>
         </div>
       </section>
@@ -258,25 +254,75 @@ const Features = () => {
 
 // CTA Section
 const CTA = () => (
-  <section className="py-16 md:py-20 bg-gradient-to-r from-accent to-violet-500/20">
+  <section className="py-16 md:py-20 bg-[#070707]">
     <div className="container-locked px-4 text-center">
-      <motion.div {...fadeIn(0)} className="max-w-2xl mx-auto">
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Power Your Next Conference?</h3>
-        <p className="text-white/90 mb-8">Deliver professional, automated, and scalable web solutions for universities, conferences, and organizations worldwide.</p>
-        <Button variant="primary" href="#contact" className="text-lg px-8 py-4">
-          Get Started Today
-        </Button>
+      <motion.div {...fadeIn(0)} className="max-w-2xl mx-auto space-y-6">
+        <h3 className="text-2xl md:text-3xl font-bold text-white">Get In Touch</h3>
+        <p className="text-white/90">We're here to help you create the perfect conference website. Contact us for custom solutions tailored to your event.</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-md mx-auto">
+          {/* WhatsApp */}
+          <a href="https://wa.me/917702304377" target="_blank" rel="noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all group">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="text-white flex-shrink-0 group-hover:scale-110 transition-transform">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.047 11.805 0 18.275 5.492 23.61 11.999 23.61c1.428 0 2.83-.142 4.184-.419L22.402 30l3.522-3.586c1.321-.868 2.484-2.016 3.445-3.369l.005-.005A11.815 11.815 0 0020.885 3.486z"/>
+            </svg>
+            <div className="min-w-0 flex-1">
+              <div className="text-white font-semibold break-all">+91 77023 04377</div>
+              <div className="text-white/70 text-sm">WhatsApp</div>
+            </div>
+          </a>
+          
+          {/* Email */}
+          <a href="mailto:vizaxtech@gmail.com" className="flex items-center gap-3 p-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all group">
+            <Mail size={24} className="text-white flex-shrink-0 group-hover:scale-110 transition-transform" />
+            <div className="min-w-0 flex-1">
+              <div className="text-white font-semibold break-all">vizaxtech@gmail.com</div>
+              <div className="text-white/70 text-sm">Email</div>
+            </div>
+          </a>
+          
+          {/* Location */}
+          <div className="flex items-center gap-3 p-4 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+            <MapPin size={24} className="text-white flex-shrink-0" />
+            <div className="min-w-0 flex-1">
+              <div className="text-white font-semibold">Visakhapatnam (Vizag)</div>
+              <div className="text-white/70 text-sm">Location</div>
+            </div>
+          </div>
+          
+          {/* Phone Call */}
+          <a href="tel:+917702304377" className="flex items-center gap-3 p-4 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 hover:border-accent/50 transition-all group">
+            <Phone size={24} className="text-white flex-shrink-0 group-hover:scale-110 transition-transform" />
+            <div className="min-w-0 flex-1">
+              <div className="text-white font-semibold break-all">+91 77023 04377</div>
+              <div className="text-white/70 text-sm">Call</div>
+            </div>
+          </a>
+        </div>
       </motion.div>
     </div>
   </section>
 )
 
-const BestProduct = () => (
-  <>
-    <Hero />
-    <Features />
-    <CTA />
-  </>
-)
+const BestProduct = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.hash === '#features') {
+      const element = document.getElementById('features')
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }, [location.hash])
+
+  return (
+    <>
+      <Hero />
+      <Features />
+      <CTA />
+    </>
+  )
+}
 
 export default BestProduct

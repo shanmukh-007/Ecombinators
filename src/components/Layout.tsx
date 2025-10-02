@@ -97,24 +97,12 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            to="/products"
-            className={`hover:text-white transition-colors ${isActive('/products') ? 'text-white font-semibold' : ''}`}
-          >
-            Products
-          </Link>
-          <Link
-            to="/best-product"
-            className={`hover:text-white transition-colors ${isActive('/best-product') ? 'text-white font-semibold' : ''}`}
-          >
-            Best Product
-          </Link>
-          <Link
             to="/about"
             className={`hover:text-white transition-colors ${isActive('/about') ? 'text-white font-semibold' : ''}`}
           >
             About
           </Link>
-          <a href="#services" className="hover:text-white transition-colors">Services</a>
+          <Link to="/#features" className="hover:text-white transition-colors">Features</Link>
           <a href="#work" className="hover:text-white transition-colors">Work</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
         </nav>
@@ -149,33 +137,19 @@ const Navbar = () => {
               Home
             </Link>
             <Link
-              to="/products"
-              onClick={closeMobileMenu}
-              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/products') ? 'text-white font-semibold' : ''}`}
-            >
-              Products
-            </Link>
-            <Link
-              to="/best-product"
-              onClick={closeMobileMenu}
-              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/best-product') ? 'text-white font-semibold' : ''}`}
-            >
-              Best Product
-            </Link>
-            <Link
               to="/about"
               onClick={closeMobileMenu}
               className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/about') ? 'text-white font-semibold' : ''}`}
             >
               About
             </Link>
-            <a
-              href="#services"
+            <Link
+              to="/#features"
               onClick={closeMobileMenu}
               className="text-white/80 hover:text-white transition-colors py-2"
             >
-              Services
-            </a>
+              Features
+            </Link>
             <a
               href="#work"
               onClick={closeMobileMenu}
@@ -205,10 +179,8 @@ const Footer = () => (
     <div className="container-locked px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
       <p>© {new Date().getFullYear()} Vizax. All rights reserved.</p>
       <div className="flex items-center gap-5">
-        <Link to="/products" className="hover:text-white">Products</Link>
-        <Link to="/best-product" className="hover:text-white">Best Product</Link>
         <Link to="/about" className="hover:text-white">About</Link>
-        <a href="#services" className="hover:text-white">Services</a>
+        <Link to="/#features" className="hover:text-white">Features</Link>
         <a href="#contact" className="hover:text-white">Contact</a>
         <Button variant="secondary" href="#contact">Book a Call</Button>
       </div>
