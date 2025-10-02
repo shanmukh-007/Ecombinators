@@ -103,6 +103,12 @@ const Navbar = () => {
             Products
           </Link>
           <Link
+            to="/best-product"
+            className={`hover:text-white transition-colors ${isActive('/best-product') ? 'text-white font-semibold' : ''}`}
+          >
+            Best Product
+          </Link>
+          <Link
             to="/about"
             className={`hover:text-white transition-colors ${isActive('/about') ? 'text-white font-semibold' : ''}`}
           >
@@ -150,6 +156,13 @@ const Navbar = () => {
               Products
             </Link>
             <Link
+              to="/best-product"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/best-product') ? 'text-white font-semibold' : ''}`}
+            >
+              Best Product
+            </Link>
+            <Link
               to="/about"
               onClick={closeMobileMenu}
               className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/about') ? 'text-white font-semibold' : ''}`}
@@ -192,8 +205,8 @@ const Footer = () => (
     <div className="container-locked px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
       <p>© {new Date().getFullYear()} Vizax. All rights reserved.</p>
       <div className="flex items-center gap-5">
-        <Link to="/" className="hover:text-white">Home</Link>
         <Link to="/products" className="hover:text-white">Products</Link>
+        <Link to="/best-product" className="hover:text-white">Best Product</Link>
         <Link to="/about" className="hover:text-white">About</Link>
         <a href="#services" className="hover:text-white">Services</a>
         <a href="#contact" className="hover:text-white">Contact</a>
