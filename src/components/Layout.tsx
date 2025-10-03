@@ -49,6 +49,18 @@ const Navbar = () => {
     }
   }, [lastScrollY])
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [mobileMenuOpen])
+
   // Simple throttle function
   const throttle = (func: Function, limit: number) => {
     let inThrottle: boolean
@@ -89,7 +101,7 @@ const Navbar = () => {
         opacity: isVisible ? 1 : 0
       }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/40 border-b border-white/10"
+      className="relative sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-black/40 border-b border-white/10"
     >
       <div className="container-locked flex items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2">
@@ -142,10 +154,11 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {mobileMenuOpen && (
         <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="md:hidden border-t border-white/10 bg-black/95 backdrop-blur"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          className="md:hidden absolute top-full left-0 right-0 w-full border-t border-white/10 bg-black/95 backdrop-blur shadow-lg"
+          style={{ zIndex: 60 }}
         >
           <nav className="container-locked px-4 py-4 flex flex-col gap-4">
             <Link
