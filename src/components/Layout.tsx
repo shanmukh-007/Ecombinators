@@ -5,16 +5,16 @@ import React, { useState, useEffect, useRef } from 'react'
 
 const MotionLink = motion.a
 
-const Button: React.FC<{ variant?: 'primary' | 'secondary', href?: string, children: React.ReactNode }>
-  = ({ variant = 'primary', href = '#contact', children }) => {
+const Button: React.FC<{ variant?: 'primary' | 'secondary', href?: string, onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void, children: React.ReactNode }>
+  = ({ variant = 'primary', href = '#contact', onClick, children }) => {
   const classes = variant === 'primary'
     ? 'bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-400 text-white shadow-md hover:shadow-lg'
     : 'bg-transparent text-white border border-white/20 hover:border-accent/50 hover:text-accent'
   const base = 'inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-all'
   return href.startsWith('http') ? (
-    <MotionLink whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }} className={`${base} ${classes}`} href={href} target="_blank" rel="noreferrer">{children}</MotionLink>
+    <MotionLink whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }} className={`${base} ${classes}`} href={href} target="_blank" rel="noreferrer" onClick={onClick}>{children}</MotionLink>
   ) : (
-    <MotionLink whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }} className={`${base} ${classes}`} href={href}>{children}</MotionLink>
+    <MotionLink whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }} className={`${base} ${classes}`} href={href} onClick={onClick}>{children}</MotionLink>
   )
 }
 
@@ -126,7 +126,7 @@ const Navbar = () => {
           </Link>
         </nav>
         <div className="hidden md:block">
-          <Button variant="secondary" href="#contact">Book a Call</Button>
+          <Button variant="secondary" href="#contact" onClick={handleContactClick}>Book a Call</Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -194,7 +194,7 @@ const Navbar = () => {
               Privacy Policy
             </Link>
             <div className="pt-2">
-              <Button variant="secondary" href="#contact">Book a Call</Button>
+              <Button variant="secondary" href="#contact" onClick={handleContactClick}>Book a Call</Button>
             </div>
           </nav>
         </motion.div>
