@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Target, Users, Lightbulb, Award, TrendingUp, Globe, Heart, Shield, Mail, CreditCard, Clock } from 'lucide-react'
+import { Target, Users, Lightbulb, Award, TrendingUp, Globe, Heart } from 'lucide-react'
 import React from 'react'
 
 const fadeIn = (delay = 0) => ({ 

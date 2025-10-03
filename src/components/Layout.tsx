@@ -61,6 +61,14 @@ const Navbar = () => {
     }
   }
 
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    closeMobileMenu()
+    
+    // Navigate to home page and scroll to contact
+    window.location.href = '/#contact'
+  }
+
   const isActive = (path: string) => {
     if (path === '/') {
       return location.pathname === '/'
@@ -88,7 +96,7 @@ const Navbar = () => {
           <span className="text-2xl md:text-3xl font-black tracking-tight text-white">vizax</span>
         </Link>
 
-        {/* Desktop Navigation */}
+  {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-6 text-sm text-white/80">
           <Link
             to="/"
@@ -103,8 +111,19 @@ const Navbar = () => {
             About
           </Link>
           <Link to="/#features" className="hover:text-white transition-colors">Features</Link>
-          <a href="#work" className="hover:text-white transition-colors">Work</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          <Link to="/" className="hover:text-white transition-colors" onClick={handleContactClick}>Contact</Link>
+          <Link
+            to="/terms"
+            className={`hover:text-white transition-colors ${isActive('/terms') ? 'text-white font-semibold' : ''}`}
+          >
+            Terms
+          </Link>
+          <Link
+            to="/privacy"
+            className={`hover:text-white transition-colors ${isActive('/privacy') ? 'text-white font-semibold' : ''}`}
+          >
+            Privacy Policy
+          </Link>
         </nav>
         <div className="hidden md:block">
           <Button variant="secondary" href="#contact">Book a Call</Button>
@@ -150,20 +169,30 @@ const Navbar = () => {
             >
               Features
             </Link>
-            <a
-              href="#work"
-              onClick={closeMobileMenu}
-              className="text-white/80 hover:text-white transition-colors py-2"
-            >
-              Work
-            </a>
-            <a
-              href="#contact"
-              onClick={closeMobileMenu}
+            <Link
+              to="/"
+              onClick={(e) => {
+                closeMobileMenu()
+                handleContactClick(e)
+              }}
               className="text-white/80 hover:text-white transition-colors py-2"
             >
               Contact
-            </a>
+            </Link>
+            <Link
+              to="/terms"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/terms') ? 'text-white font-semibold' : ''}`}
+            >
+              Terms
+            </Link>
+            <Link
+              to="/privacy"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/privacy') ? 'text-white font-semibold' : ''}`}
+            >
+              Privacy Policy
+            </Link>
             <div className="pt-2">
               <Button variant="secondary" href="#contact">Book a Call</Button>
             </div>
@@ -174,15 +203,19 @@ const Navbar = () => {
   )
 }
 
-const Footer = () => (
-  <footer className="py-10 border-t border-white/10">
+const Footer = ({ handleContactClick }: { handleContactClick: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => (
+  <footer className="py-10 border-t border-white/10 mt-auto">
     <div className="container-locked px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
       <p>© {new Date().getFullYear()} Vizax. All rights reserved.</p>
       <div className="flex items-center gap-5">
         <Link to="/about" className="hover:text-white">About</Link>
         <Link to="/#features" className="hover:text-white">Features</Link>
-        <a href="#contact" className="hover:text-white">Contact</a>
-        <Button variant="secondary" href="#contact">Book a Call</Button>
+        <Link to="/" className="hover:text-white" onClick={handleContactClick}>Contact</Link>
+        <Link to="/terms" className="hover:text-white">Terms</Link>
+        <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+        <a href="#contact" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/20 rounded-xl px-5 py-3 text-sm font-semibold transition-all hover:border-accent/50 hover:text-accent" onClick={handleContactClick}>
+          Book a Call
+        </a>
       </div>
     </div>
   </footer>
@@ -193,12 +226,30 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const handleContactClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    
+    // If not on home page, navigate to home first
+    if (window.location.pathname !== '/') {
+      window.location.href = '/'
+      return
+    }
+    
+    // If already on home page, scroll to contact
+    setTimeout(() => {
+      const contactElement = document.getElementById('contact')
+      if (contactElement) {
+        contactElement.scrollIntoView({ behavior: 'smooth' })
+      }
+    }, 100) // Small delay to ensure page navigation completes
+  }
+
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </>
+      <main className="flex-1">{children}</main>
+      <Footer handleContactClick={handleContactClick} />
+    </div>
   )
 }
 
