@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Shield, Mail, CreditCard, Globe, Clock, Settings, Database, X, Phone, MapPin } from 'lucide-react'
+import { ArrowRight, Shield, Mail, CreditCard, Globe, Clock, Settings, Database, X, Phone, MapPin, ExternalLink } from 'lucide-react'
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -52,6 +52,112 @@ const Hero = () => (
     </div>
   </section>
 )
+
+// Live Examples Section
+const LiveExamples = () => {
+  const examples = [
+    {
+      title: "Main Conference Website",
+      subtitle: "Full-featured conference management platform",
+      url: "intelliglobalconferences.com",
+      link: "https://intelliglobalconferences.com",
+      image: "/images/pricing/main-website.png"
+    },
+    {
+      title: "Secondary Conference Website",
+      subtitle: "Specialized conference site with independent admin",
+      url: "nursingeducationconferences.org",
+      link: "https://nursingeducationconferences.org",
+      image: "/images/pricing/secondary-website.png"
+    }
+  ]
+
+  return (
+    <section className="py-20 md:py-28 bg-black">
+      <div className="container-locked px-4">
+        <div className="text-center mb-12">
+          <motion.p {...fadeIn(0)} className="text-accent/90 font-semibold tracking-wide mb-2">
+            Live Examples
+          </motion.p>
+          <motion.h2 {...fadeIn(0.1)} className="text-3xl md:text-4xl font-extrabold mb-3">
+            See What You Get
+          </motion.h2>
+          <motion.p {...fadeIn(0.2)} className="text-white/70 mb-4">
+            Professional conference websites with full admin control
+          </motion.p>
+          <motion.div {...fadeIn(0.3)} className="flex flex-col items-center gap-2">
+            <p className="text-2xl md:text-3xl font-bold text-accent">
+              $0 Setup Fee - <span className="text-green-500">FREE!</span>
+            </p>
+            <p className="text-green-500 text-sm md:text-base italic font-semibold">
+              Price and Plans are negotiable
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {examples.map((example, index) => (
+            <motion.div
+              key={index}
+              {...fadeIn(0.2 + index * 0.1)}
+              className="group relative"
+            >
+              {/* Website Preview Image */}
+              <a
+                href={example.link}
+                target="_blank"
+                rel="noreferrer"
+                className="block relative mb-6 rounded-xl overflow-hidden bg-slate-800/50 border border-white/10 hover:border-accent/40 transition-all duration-300"
+              >
+                <div className="aspect-[16/10] relative">
+                  <img
+                    src={example.image}
+                    alt={example.title}
+                    className="w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      // Fallback if image doesn't exist
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="800" height="500"%3E%3Crect fill="%23334155" width="800" height="500"/%3E%3Ctext fill="%23fff" font-family="Arial" font-size="24" x="50%25" y="50%25" text-anchor="middle" dominant-baseline="middle"%3EWebsite Preview%3C/text%3E%3C/svg%3E';
+                    }}
+                  />
+                  {/* Overlay on hover */}
+                  <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="px-6 py-3 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg flex items-center gap-2 transition-all">
+                      Visit Live Website
+                      <ExternalLink size={18} />
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              {/* Website Info */}
+              <div className="text-center">
+                <a
+                  href={example.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block hover:text-accent transition-colors"
+                >
+                  <h3 className="text-xl md:text-2xl font-bold mb-2">{example.title}</h3>
+                </a>
+                <p className="text-white/70 mb-4">{example.subtitle}</p>
+                <a
+                  href={example.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium transition-colors"
+                >
+                  {example.url}
+                  <ArrowRight size={16} />
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 // Feature Card
 const FeatureCard: React.FC<{
@@ -303,6 +409,7 @@ const BestProduct = () => {
   return (
     <>
       <Hero />
+      <LiveExamples />
       <Features />
       <CTA />
     </>

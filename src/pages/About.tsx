@@ -53,28 +53,16 @@ const stats = [
 
 const teamMembers: TeamMember[] = [
   {
-    name: 'Dr. Elena Vasquez',
-    role: 'Conference Technology Lead',
-    bio: 'Expert in event management software with 12+ years building digital platforms for global conferences.',
-    avatar: 'https://i.pravatar.cc/150?img=5'
-  },
-  {
-    name: 'Raj Patel',
-    role: 'Senior Web Developer',
-    bio: 'Full-stack specialist focused on secure payment integrations and user-friendly registration systems.',
-    avatar: 'https://i.pravatar.cc/150?img=12'
-  },
-  {
-    name: 'Sophia Lee',
-    role: 'UX/UI Designer',
-    bio: 'Award-winning designer specializing in intuitive interfaces for academic and professional events.',
-    avatar: 'https://i.pravatar.cc/150?img=9'
-  },
-  {
-    name: 'Michael Grant',
+    name: 'Professor V',
     role: 'Project Manager',
     bio: 'Experienced in delivering custom software solutions for universities and international organizations.',
-    avatar: 'https://i.pravatar.cc/150?img=13'
+    avatar: '/images/Professor-V.webp'
+  },
+  {
+    name: 'Professor Shanmukh',
+    role: 'Conference Technology Lead',
+    bio: 'Expert in event management software with 12+ years building digital platforms for global conferences.',
+    avatar: '/images/Professor-shanmukh.webp'
   }
 ]
 
@@ -183,22 +171,22 @@ const About: React.FC = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
               {...fadeIn(index * 0.1)}
               whileHover={{ scale: 1.02, y: -4 }}
-              className="card rounded-2xl p-6 ring-1 ring-white/10 bg-gradient-to-b from-white/10 to-white/5 hover:ring-accent/40 transition-all text-center"
+              className="card rounded-2xl p-8 ring-1 ring-white/10 bg-gradient-to-b from-white/10 to-white/5 hover:ring-accent/40 transition-all text-center"
             >
               <img
                 src={member.avatar}
                 alt={member.name}
-                className="w-24 h-24 rounded-full mx-auto mb-4 object-cover ring-2 ring-accent/20"
+                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover ring-2 ring-accent/20"
               />
-              <h3 className="text-lg font-bold mb-1">{member.name}</h3>
-              <p className="text-accent text-sm font-semibold mb-3">{member.role}</p>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <h3 className="text-xl font-bold mb-2">{member.name}</h3>
+              <p className="text-accent text-base font-semibold mb-4">{member.role}</p>
+              <p className="text-white/70 text-base leading-relaxed">
                 {member.bio}
               </p>
             </motion.div>
@@ -217,21 +205,15 @@ const About: React.FC = () => {
             Ready to Launch Your Conference Website?
           </h2>
           <p className="text-white/70 text-lg max-w-2xl mx-auto mb-8">
-            We create custom solutions that fit your event perfectly. From basic registrations to advanced management systems, 
+            We create custom solutions that fit your event perfectly. From basic registrations to advanced management systems,
             we'll build exactly what you need.
           </p>
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex justify-center">
             <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-400 via-violet-500 to-fuchsia-400 text-white rounded-xl px-6 py-3 font-semibold hover:opacity-90 transition-opacity"
+              href="/#contact"
+              className="inline-flex items-center gap-2 bg-transparent text-white border-2 border-white rounded-xl px-8 py-4 font-bold text-lg hover:bg-white hover:text-black transition-all"
             >
               Get Started
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-transparent text-white border border-white/20 rounded-xl px-6 py-3 font-semibold hover:border-accent/50 hover:text-accent transition-colors"
-            >
-              Learn More
             </a>
           </div>
         </motion.div>

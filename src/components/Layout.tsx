@@ -122,20 +122,14 @@ const Navbar = () => {
           >
             About
           </Link>
+          <Link
+            to="/pricing"
+            className={`hover:text-white transition-colors ${isActive('/pricing') ? 'text-white font-semibold' : ''}`}
+          >
+            Pricing
+          </Link>
           <Link to="/#features" className="hover:text-white transition-colors">Features</Link>
           <Link to="/" className="hover:text-white transition-colors" onClick={handleContactClick}>Contact</Link>
-          <Link
-            to="/terms"
-            className={`hover:text-white transition-colors ${isActive('/terms') ? 'text-white font-semibold' : ''}`}
-          >
-            Terms
-          </Link>
-          <Link
-            to="/privacy"
-            className={`hover:text-white transition-colors ${isActive('/privacy') ? 'text-white font-semibold' : ''}`}
-          >
-            Privacy Policy
-          </Link>
         </nav>
         <div className="hidden md:block">
           <Button variant="secondary" href="#contact" onClick={handleContactClick}>Book a Call</Button>
@@ -176,6 +170,13 @@ const Navbar = () => {
               About
             </Link>
             <Link
+              to="/pricing"
+              onClick={closeMobileMenu}
+              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/pricing') ? 'text-white font-semibold' : ''}`}
+            >
+              Pricing
+            </Link>
+            <Link
               to="/#features"
               onClick={closeMobileMenu}
               className="text-white/80 hover:text-white transition-colors py-2"
@@ -191,20 +192,6 @@ const Navbar = () => {
               className="text-white/80 hover:text-white transition-colors py-2"
             >
               Contact
-            </Link>
-            <Link
-              to="/terms"
-              onClick={closeMobileMenu}
-              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/terms') ? 'text-white font-semibold' : ''}`}
-            >
-              Terms
-            </Link>
-            <Link
-              to="/privacy"
-              onClick={closeMobileMenu}
-              className={`text-white/80 hover:text-white transition-colors py-2 ${isActive('/privacy') ? 'text-white font-semibold' : ''}`}
-            >
-              Privacy Policy
             </Link>
             <div className="pt-2">
               <Button variant="secondary" href="#contact" onClick={handleContactClick}>Book a Call</Button>
@@ -222,13 +209,11 @@ const Footer = ({ handleContactClick }: { handleContactClick: (e: React.MouseEve
       <p>© {new Date().getFullYear()} Vizax. All rights reserved.</p>
       <div className="flex items-center gap-5">
         <Link to="/about" className="hover:text-white">About</Link>
+        <Link to="/pricing" className="hover:text-white">Pricing</Link>
         <Link to="/#features" className="hover:text-white">Features</Link>
         <Link to="/" className="hover:text-white" onClick={handleContactClick}>Contact</Link>
         <Link to="/terms" className="hover:text-white">Terms</Link>
         <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
-        <a href="#contact" className="inline-flex items-center gap-2 bg-transparent text-white border border-white/20 rounded-xl px-5 py-3 text-sm font-semibold transition-all hover:border-accent/50 hover:text-accent" onClick={handleContactClick}>
-          Book a Call
-        </a>
       </div>
     </div>
   </footer>
