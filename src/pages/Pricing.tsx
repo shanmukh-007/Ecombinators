@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
-import { Check, ArrowRight, Shield, Database, Mail, CreditCard, Globe, Clock, Settings, Sparkles, X } from 'lucide-react'
+import { Check, ArrowRight, Shield, Database, Settings, X } from 'lucide-react'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 
 const fadeIn = (delay = 0) => ({ 
   initial: { opacity: 0, y: 20 }, 
@@ -304,7 +303,7 @@ const Pricing: React.FC = () => {
               <div className="inline-block bg-transparent border border-white/20 rounded-2xl px-6 py-4">
                 <p className="text-white">
                   <span className="font-semibold text-white">Note:</span> Pricing varies based on the number of websites required and custom features requested.
-                  <Link to="/" className="text-white hover:text-white/80 ml-1 underline">Contact us</Link> for a personalized quote.
+                  <a href="/#contact" className="text-white hover:text-white/80 ml-1 underline">Contact us</a> for a personalized quote.
                 </p>
               </div>
             </motion.div>
