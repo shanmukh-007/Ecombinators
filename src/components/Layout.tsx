@@ -205,16 +205,16 @@ const Navbar = () => {
 
 const Footer = ({ handleContactClick }: { handleContactClick: (e: React.MouseEvent<HTMLAnchorElement>) => void }) => (
   <footer className="py-10 border-t border-white/10 mt-auto">
-    <div className="container-locked px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/60">
-      <p>© {new Date().getFullYear()} Vizax. All rights reserved.</p>
-      <div className="flex items-center gap-5">
-        <Link to="/about" className="hover:text-white">About</Link>
-        <Link to="/pricing" className="hover:text-white">Pricing</Link>
-        <Link to="/#features" className="hover:text-white">Features</Link>
-        <Link to="/" className="hover:text-white" onClick={handleContactClick}>Contact</Link>
-        <Link to="/terms" className="hover:text-white">Terms</Link>
-        <Link to="/privacy" className="hover:text-white">Privacy Policy</Link>
+    <div className="container-locked px-4 flex flex-col items-center justify-center gap-6 text-sm text-white/60">
+      <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-3">
+        <Link to="/about" className="hover:text-white whitespace-nowrap">About</Link>
+        <Link to="/pricing" className="hover:text-white whitespace-nowrap">Pricing</Link>
+        <Link to="/#features" className="hover:text-white whitespace-nowrap">Features</Link>
+        <Link to="/" className="hover:text-white whitespace-nowrap" onClick={handleContactClick}>Contact</Link>
+        <Link to="/terms" className="hover:text-white whitespace-nowrap">Terms</Link>
+        <Link to="/privacy" className="hover:text-white whitespace-nowrap">Privacy Policy</Link>
       </div>
+      <p className="text-center">© {new Date().getFullYear()} Vizax. All rights reserved.</p>
     </div>
   </footer>
 )
