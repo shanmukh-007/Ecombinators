@@ -1,8 +1,8 @@
-# Vizax - AI Solutions Website Setup Guide
+# Vizax - Conference Website Solutions Setup Guide
 
 ## 🎉 Project Overview
 
-This is a modern, fully customized React + TypeScript + Vite website for **Vizax**, an AI solutions company. The project features:
+This is a modern, fully customized React + TypeScript + Vite website for **Vizax**, a professional conference website solutions provider. The project features:
 
 - ✅ Complete brand customization (Vizax branding throughout)
 - ✅ React Router DOM for multi-page navigation
@@ -105,25 +105,24 @@ All instances of "The Ecombinators" have been replaced with "Vizax":
 - **Website**: vizax.tech
 
 ### Content Updates:
-- Hero section emphasizes AI solutions
-- Services focused on AI capabilities
-- Testimonials updated with Vizax branding
-- All meta tags optimized for AI focus
+- Hero section emphasizes conference website solutions
+- Features focused on conference management capabilities
+- Live examples of conference websites
+- All meta tags optimized for conference solutions
 
 ## 🗺️ Navigation Structure
 
 ### Main Routes:
-- `/` - Home page (Hero, Services, Work, Why Us, Testimonials, Contact)
-- `/products` - Products page (AI solutions showcase)
+- `/` - Home page (Hero, Live Examples, Features, Contact)
+- `/pricing` - Pricing page (Conference website packages)
 - `/about` - About page (Mission, values, team)
 
 ### Navigation Links:
 The navbar includes:
 - Home
-- Products
 - About
-- Services (anchor link)
-- Work (anchor link)
+- Pricing
+- Features (anchor link)
 - Contact (anchor link)
 
 ## 💳 PayPal Integration

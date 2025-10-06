@@ -32,8 +32,8 @@ Navigate to: **http://localhost:5173/**
 
 | Page | URL | Description |
 |------|-----|-------------|
-| Home | `/` | Main landing page with all sections |
-| Products | `/products` | AI solutions and products showcase |
+| Home | `/` | Main landing page with live examples and features |
+| Pricing | `/pricing` | Conference website packages and pricing |
 | About | `/about` | Company info, team, and values |
 
 ---
@@ -96,8 +96,8 @@ REACT_APP_PAYPAL_CLIENT_ID=your_client_id_here
 ## 🎯 What's Included
 
 ### Pages Created:
-- ✅ Home page with Hero, Services, Work, Testimonials, Contact
-- ✅ Products page with 6 AI solutions
+- ✅ Home page with Hero, Live Examples, Features, Contact
+- ✅ Pricing page with conference website packages
 - ✅ About page with mission, team, values
 
 ### Components:
@@ -107,9 +107,9 @@ REACT_APP_PAYPAL_CLIENT_ID=your_client_id_here
 
 ### Branding:
 - ✅ All "Ecombinators" → "Vizax"
-- ✅ Email: team@vizax.tech
-- ✅ Phone: +1 (555) 123-4567
-- ✅ AI-focused content throughout
+- ✅ Email: vizaxtech@gmail.com
+- ✅ Phone/WhatsApp: +91 77023 04377
+- ✅ Conference solutions focused content throughout
 
 ---
 
